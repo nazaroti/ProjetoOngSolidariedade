@@ -66,7 +66,6 @@ app.engine("handlebars", engine({
     }
 }));
 
-app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
 // #endregion
 
@@ -780,6 +779,10 @@ app.post("/api/verificar-token", verificarToken, function (req, res) {
 // #endregion
 
 // #endregion //
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'paginainicial.html'));
+});
 
 app.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
