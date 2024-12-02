@@ -41,30 +41,6 @@ ParticipantModel.belongsTo(UserModel, {
     as: 'user',
 });
 
-// #region Configuração Handlebars
-app.engine("handlebars", engine({
-    extname: '.hbs',
-    defaultLayout: "main",
-    helpers: {
-        isEquals: function (a, b) {
-            return a === b;
-        },
-        Equals: function (a, b) {
-            return a != b;
-        },
-        reverseDate: function (date) {
-            const parts = date.split('-');
-            return `${parts[2]}/${parts[1]}/${parts[0]}`;
-        },
-        removeSeconds: function (time) {
-            return time.slice(0, 5);
-        },
-        json: function (context) {
-            return JSON.stringify(context);
-        }
-    }
-}));
-
 app.set('views', path.join(__dirname, 'views'));
 // #endregion
 
@@ -780,7 +756,7 @@ app.post("/api/verificar-token", verificarToken, function (req, res) {
 // #endregion //
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'paginainicial.html'));
+    res.sendFile(path.join(__dirname, 'views', 'paginainicial.html'));
 });
 
 app.listen(port, () => {
