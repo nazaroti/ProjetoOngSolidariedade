@@ -9,7 +9,6 @@ const database = require("./models/db");
 const axios = require('axios');
 
 const { Op } = require("sequelize");
-const { engine } = require("express-handlebars");
 const path = require("path");
 const methodOverride = require('method-override');
 const flash = require('connect-flash');
@@ -781,7 +780,7 @@ app.post("/api/verificar-token", verificarToken, function (req, res) {
 // #endregion //
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'paginainicial.html'));
+    res.sendFile(path.join(__dirname, 'paginainicial.html'));
 });
 
 app.listen(port, () => {
